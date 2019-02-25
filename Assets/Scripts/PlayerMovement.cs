@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private NavMeshAgent navMeshAgent;
 
     private bool running = false;
+    private bool crouched = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         RunAnimToggle();
+        Crouched();
     }
 
     private void Movement()
@@ -62,6 +65,17 @@ public class PlayerMovement : MonoBehaviour
             running = true;
         }
         animator.SetBool("running", running);
+    }
+
+    private void Crouched()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            crouched = true;
+            Debug.Log("Crouched");
+        }
+        else crouched = false;
     }
 }
 

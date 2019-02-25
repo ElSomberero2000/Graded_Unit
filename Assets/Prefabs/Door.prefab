@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2056977630730020648}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: ToScene2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056977630730020647}
-  m_LocalRotation: {x: -0, y: 0.28889608, z: -0, w: 0.95736045}
+  m_LocalRotation: {x: 0, y: 0.28889814, z: 0, w: 0.95735985}
   m_LocalPosition: {x: -4.7, y: 0.51396275, z: 13.63}
   m_LocalScale: {x: 0.5, y: 4, z: 2}
   m_Children: []

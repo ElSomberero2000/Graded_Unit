@@ -28,9 +28,6 @@ public class SceneManagement : MonoBehaviour
             case "ToScene2":
                 SceneManager.LoadScene(1);
                 break;
-            case "ToScene3":
-                SceneManager.LoadScene(2);
-                break;
             default:
                 // Do nothing
                 break;
