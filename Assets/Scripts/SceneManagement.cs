@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
@@ -14,5 +15,25 @@ public class SceneManagement : MonoBehaviour
     void Update()
     {
         
+    }
+
+    // Scene management
+    void SceneChangeOnCollision(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "ToScene1":
+                SceneManager.LoadScene(0);
+                break;
+            case "ToScene2":
+                SceneManager.LoadScene(1);
+                break;
+            case "ToScene3":
+                SceneManager.LoadScene(2);
+                break;
+            default:
+                // Do nothing
+                break;
+        }
     }
 }
