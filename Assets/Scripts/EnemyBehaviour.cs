@@ -1,45 +1,45 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine;
+using System.Collections;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    private Animator animator;
 
-    [SerializeField]
-    private Transform target; // Allows specification of object to be followed in inspector
-    [SerializeField]
-    private Transform transform; // Allows specification of object to be adjusted in inspector
+    public float moveSpeed = 6;
 
-    private bool running = true;
+    Rigidbody rigidbody;
+    Camera viewCamera;
+    Vector3 velocity;
 
-    // Start is called before the first frame update
+    // FOR FIELD OF VIEW!!! //
+    public float viewRadius;
+    [Range(0,360)]
+    public float viewAngle;
+
+    public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal) {
+        if (!angleIsGlobal)
+        {
+            angleInDegrees += transform.eulerAngles.y;
+        }
+        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+    }
+    //......................//
+
     void Start()
     {
-        animator = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody>();
+        viewCamera = Camera.main;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Chase();
+        Vector3 mousePos = viewCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, viewCamera.transform.position.y));
+        transform.LookAt(mousePos + Vector3.up * transform.position.y);
+        velocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized * moveSpeed;
     }
 
-    private void Chase() // TODO: Generate patrol routes that enemies will follow when player is undetected
-                         // TODO: Give enemies sight so player can be detected within cone of vision whilst stealthed (then begin chase)
+    void FixedUpdate()
     {
-        GameObject player =  GameObject.Find("Player"); // Saved target gameobject
-        if (player.GetComponent<PlayerMovement>().crouched == false) // Follow player (player is detected)
-        {
-            running = true; 
-            transform.LookAt(target); // Rotate enemies to face player character
-            transform.Translate(Vector3.forward * 3 * Time.deltaTime);
-        }
-        else if (player.GetComponent<PlayerMovement>().crouched == true) // Remain idle (player is undetected)
-        {
-            running = false;
-        }
-        animator.SetBool("running", running);
+        rigidbody.MovePosition(rigidbody.position + velocity * Time.fixedDeltaTime);
     }
 }
+

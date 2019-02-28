@@ -24,14 +24,9 @@ public class UIComponents : MonoBehaviour
     {
         float t = Time.time - startTime;
 
-        string minutes = (2 - ((int)t / 60)).ToString();
-        string seconds = (10 - (t % 10)).ToString("f0"); // f2 defines that only 2 decimals are in float
+        string minutes = (4 - ((int)t / 60)).ToString();
+        string seconds = (60 - (t % 60)).ToString("f0"); // f2 defines that only 2 decimals are in float
 
         timerText.text = minutes + ":" + seconds;
-
-        if ( seconds == "0")
-        {
-            seconds = ((10 - (t % 10))-1).ToString("f0");
-        }
     }
 }
