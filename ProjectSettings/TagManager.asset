@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ToScene1
   - ToScene2
+  - Enemy
   layers:
   - Default
   - TransparentFX
