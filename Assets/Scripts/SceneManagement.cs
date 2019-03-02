@@ -39,6 +39,10 @@ public class SceneManagement : MonoBehaviour
                 Debug.Log("Collision achieved");
                 SceneManager.LoadScene(1);
                 break;
+            case "ToScene3":
+                Debug.Log("Collision achieved");
+                SceneManager.LoadScene(2);
+                break;
             default:
                 // Do nothing
                 break;
