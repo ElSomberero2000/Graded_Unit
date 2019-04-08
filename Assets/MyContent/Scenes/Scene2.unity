@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 131619405}
   - component: {fileID: 131619404}
   - component: {fileID: 131619403}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Floor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 233979841}
   - component: {fileID: 233979840}
   - component: {fileID: 233979839}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -967,7 +967,7 @@ GameObject:
   - component: {fileID: 977652745}
   - component: {fileID: 977652744}
   - component: {fileID: 977652743}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Floor (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1434,6 +1434,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 3876580649557471635, guid: 330c5c3e90c07cc4291eada026d3f33b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 3876580649557471639, guid: 330c5c3e90c07cc4291eada026d3f33b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1777,7 +1782,7 @@ GameObject:
   - component: {fileID: 1287881607}
   - component: {fileID: 1287881606}
   - component: {fileID: 1287881605}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Floor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2051,7 +2056,7 @@ GameObject:
   - component: {fileID: 1458833095}
   - component: {fileID: 1458833094}
   - component: {fileID: 1458833093}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2212,7 +2217,7 @@ GameObject:
   - component: {fileID: 1740556840}
   - component: {fileID: 1740556839}
   - component: {fileID: 1740556838}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Floor (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

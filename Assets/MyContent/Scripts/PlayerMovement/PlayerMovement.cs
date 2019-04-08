@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask movementMask;
     PlayerMotor motor;
 
+    public bool crouched = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -50,16 +52,46 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+
+        Crouched();
     }
 
     void SetFocus(Interactable newFocus)
     {
-        focus = newFocus;
+        if (newFocus != focus)
+        {
+            if (focus != null)
+                focus.OnDefocused();
+
+            focus = newFocus;
+            motor.FollowTarget(newFocus);
+        }
+
+        newFocus.OnFocused(transform);
     }
 
     void RemoveFocus()
     {
+        if (focus != null)
+            focus.OnDefocused();
+
         focus = null;
+        motor.StopFollowingTarget();
+    }
+
+    private void Crouched() // TODO: Remove debug logs (for testing purposes)
+    {
+        // If crouched is true then stealth is ongoing else enemies will be aware of player
+        if (crouched == false && Input.GetKeyDown(KeyCode.Space))
+        {
+            crouched = true;
+            Debug.Log("Crouched");
+        }
+        else if (crouched == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            crouched = false;
+            Debug.Log("Uncrouched");
+        }
     }
 }
 

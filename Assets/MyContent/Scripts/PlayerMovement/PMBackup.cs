@@ -12,8 +12,6 @@ public class PMBackup : MonoBehaviour
     private bool running = false;
     public bool crouched = false;
 
-    public Interactable focus;
-
     // Start is called before the first frame update
     void Start()
     {
