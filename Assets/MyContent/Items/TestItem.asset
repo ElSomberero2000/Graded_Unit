@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TestItem
   m_EditorClassIdentifier: 
   name: ' Gold Box'
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 0229d10e6301abe4b89f02eb52e24adc, type: 3}
   isDefaultItem: 0
