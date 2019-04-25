@@ -25,7 +25,7 @@ public class EBBackup : MonoBehaviour
     {
         Chase();
     }
-
+    
     private void Chase() // TODO: Generate patrol routes that enemies will follow when player is undetected
                          // TODO: Give enemies sight so player can be detected within cone of vision whilst stealthed (then begin chase)
     {
