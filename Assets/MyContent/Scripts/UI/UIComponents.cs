@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CountdownTimer : MonoBehaviour
+public class UIComponents : MonoBehaviour
 {
     public Text timerText;
     private float startTime;
@@ -17,10 +17,10 @@ public class CountdownTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Countdown();
+        CountdownTimer();
     }
 
-    private void Countdown()
+    private void CountdownTimer()
     {
         float t = Time.time - startTime;
 
