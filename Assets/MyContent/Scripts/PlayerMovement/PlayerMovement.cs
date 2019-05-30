@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
                 focus.OnDefocused();
 
             focus = newFocus;
-            motor.FollowTarget(newFocus);
+            motor.FollowTarget(newFocus); // Makes the player pawn run towards the focussed target
         }
 
         newFocus.OnFocused(transform);
@@ -79,18 +79,18 @@ public class PlayerMovement : MonoBehaviour
             focus.OnDefocused();
 
         focus = null;
-        motor.StopFollowingTarget();
+        motor.StopFollowingTarget(); // Makes the player pawn stop running towards the focussed target and enter the idle state
     }
 
     private void Crouched() // TODO: Remove debug logs (for testing purposes)
     {
-        // If crouched is true then stealth is ongoing else enemies will be aware of player
-        if (crouched == false && Input.GetKeyDown(KeyCode.Space))
+        // If crouched is true then stealth is ongoing else enemies will be aware of player and will run to them regardless of positioning
+        if (crouched == false && Input.GetKeyDown(KeyCode.Space)) // stealth toggle on
         {
             crouched = true;
             Debug.Log("Crouched");
         }
-        else if (crouched == true && Input.GetKeyDown(KeyCode.Space))
+        else if (crouched == true && Input.GetKeyDown(KeyCode.Space)) // stealth toggle off
         {
             crouched = false;
             Debug.Log("Uncrouched");

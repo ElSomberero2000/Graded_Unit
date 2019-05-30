@@ -11,7 +11,7 @@ public class UIComponents : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startTime = Time.time;
+        startTime = Time.time; // Timer starts to count when the scene is loaded in 
     }
 
     // Update is called once per frame
@@ -20,13 +20,13 @@ public class UIComponents : MonoBehaviour
         CountdownTimer();
     }
 
-    private void CountdownTimer()
+    private void CountdownTimer() // As the timer accumulates the time since start is removed from a set time for the game to be completed in (5 minutes)
     {
         float t = Time.time - startTime;
 
         string minutes = (4 - ((int)t / 60)).ToString();
-        string seconds = (60 - (t % 60)).ToString("f0"); // f2 defines that only 2 decimals are in float
+        string seconds = (60 - (t % 60)).ToString("f0"); // f2 defines that only 2 decimals are in float when written to screen
 
-        timerText.text = minutes + ":" + seconds;
+        timerText.text = minutes + ":" + seconds; // WHat is written to the screen in the inventory
     }
 }

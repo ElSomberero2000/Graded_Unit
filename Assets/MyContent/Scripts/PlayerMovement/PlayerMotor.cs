@@ -24,24 +24,24 @@ public class PlayerMotor : MonoBehaviour
         
         if (target != null)
         {
-            agent.SetDestination(target.position);
+            agent.SetDestination(target.position); // Makes the player run towards a targetted object
             FaceTarget();
         }
     }
 
     public void MoveToPoint(Vector3 point)
     {
-        agent.SetDestination(point);
+        agent.SetDestination(point); // Makes the player run to a point clicked in the level where the nav mesh allows.
     }
 
     private void RunAnimToggle()
     {
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if (agent.remainingDistance <= agent.stoppingDistance) // Plays the idle animation when the targeted destination is reached
         {
             // Transition to idle anim
             running = false;
         }
-        else
+        else // If an area on the level is clicked the player actor runs to that location
         {
             // Transition to run anim
             running = true;
@@ -49,21 +49,21 @@ public class PlayerMotor : MonoBehaviour
         animator.SetBool("running", running);
     }
 
-    public void FollowTarget (Interactable newTarget)
+    public void FollowTarget (Interactable newTarget) // If selecting a moving object the player will focus on the target and move/turn to face it
     {
         agent.stoppingDistance = newTarget.radius * 0.8f;
         agent.updateRotation = false;
         target = newTarget.interactionTransform;
     }
 
-    public void StopFollowingTarget()
+    public void StopFollowingTarget() // If clicked elsewhere will lose focus on the last target 
     {
         agent.stoppingDistance = 0f;
         agent.updateRotation = true;
         target = null;
     }
 
-    private void FaceTarget()
+    public void FaceTarget() // Code that makes the actor to face the target
     {
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));

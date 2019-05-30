@@ -12,18 +12,18 @@ public class InventorySlot : MonoBehaviour
     {
         item = newItem;
 
-        icon.sprite = item.icon;
-        icon.enabled = true;
-        removeButton.interactable = true;
+        icon.sprite = item.icon; // Adds corresponding image to the inventory slot panel
+        icon.enabled = true; // Makes image visible
+        removeButton.interactable = true; // Makes remove button visible when item is in inventory
     }
 
     public void ClearSlot()
     {
         item = null;
 
-        icon.sprite = null;
-        icon.enabled = false;
-        removeButton.interactable = false;
+        icon.sprite = null; // Removes image from the inventory slot panel
+        icon.enabled = false; // Makes image invisible
+        removeButton.interactable = false; // Makes remove button invisible when item is in inventory
     }
 
     public void OnRemoveButton()
@@ -35,7 +35,7 @@ public class InventorySlot : MonoBehaviour
     {
         if (item != null)
         {
-            item.Use();
+            item.Use(); // When the item icom is pressed the use item action occurs
         }
     }
 }

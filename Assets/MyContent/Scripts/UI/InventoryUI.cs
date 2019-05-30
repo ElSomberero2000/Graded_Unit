@@ -23,22 +23,22 @@ public class InventoryUI : MonoBehaviour
     {
      if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
+            inventoryUI.SetActive(!inventoryUI.activeSelf); // When the scrollwheel is used the inventory will open
         }
      if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
+            inventoryUI.SetActive(!inventoryUI.activeSelf); // Allows the inventory to be opened / closed both ways
         }
-    }
+    }   
 
-    void UpdateUI()
+    void UpdateUI() // Allows the inventory UI to update when required
     {
         Debug.Log("Updating UI");
         for (int i = 0; i < slots.Length; i++)
         {
             if (i < inventory.items.Count)
             {
-                slots[i].AddItem(inventory.items[i]);
+                slots[i].AddItem(inventory.items[i]); // if an item is picked up and there is spaces available it will be added to the inventory screen
             }
             else
             {

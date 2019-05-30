@@ -8,7 +8,8 @@ public class AudioFix : MonoBehaviour
 
     private void Awake()
     {
-        // Allows ongoing audio to continue after loading a new scene
+        // Allows audio to continue after loading a new scene
+        // Applied to the background music so there is not skipping/repeating of the track
         DontDestroyOnLoad(transform.gameObject);
 
         if (instance != null)

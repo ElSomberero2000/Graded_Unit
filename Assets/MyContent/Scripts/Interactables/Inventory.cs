@@ -27,13 +27,13 @@ public class Inventory : MonoBehaviour
 
     public List<Item> items = new List<Item>();
 
-    public bool Add (Item item)
+    public bool Add (Item item) // When an item is picked up it will appear in the inventory
     {
         if (!item.isDefaultItem)
         {
-            if (items.Count >= space)
+            if (items.Count >= space) // If there is not enough room in the inventory then the item will not be added
             {
-                Debug.Log("Not enough room");
+                Debug.Log("Not enough room"); // Debug message written to the console
                 return false;
             }
 
@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    public void Remove(Item item)
+    public void Remove(Item item) // When the cross button is pressed on the item in the inventory it will be deleted
     {
         items.Remove(item);
 

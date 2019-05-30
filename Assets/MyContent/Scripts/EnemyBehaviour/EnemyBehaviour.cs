@@ -16,10 +16,10 @@ public class EnemyBehaviour : MonoBehaviour
     [Range(0,360)]
     public float viewAngle;
 
-    public LayerMask targetMask;
-    public LayerMask obstacleMask;
+    public LayerMask targetMask; // Separates and identifies the targets from other objects in the scene
+    public LayerMask obstacleMask; // Separates and identifies the obstacles from other objects in the scene
 
-   [HideInInspector]
+    [HideInInspector]
     public List<Transform> visibleTargets = new List<Transform>();
 
     public float meshResolution;
@@ -68,9 +68,9 @@ public class EnemyBehaviour : MonoBehaviour
 
 
     // FOR FIELD OF VIEW!!! //
-    void FindVisibleTargets()
+    void FindVisibleTargets() // Identifies objects on the target layer within the fov radius that are not obscured by an obstacle
     {
-        visibleTargets.Clear();
+        visibleTargets.Clear(); // Removes old targets from the array
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
         
         for (int i = 0; i < targetsInViewRadius.Length; i++)
@@ -84,7 +84,7 @@ public class EnemyBehaviour : MonoBehaviour
 
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
-                    visibleTargets.Add(target);
+                    visibleTargets.Add(target); // Adds new targets to the array
                 }
             }
         }
@@ -111,7 +111,8 @@ public class EnemyBehaviour : MonoBehaviour
         {
             vertices[i + 1] = transform.InverseTransformPoint(viewPoints[i]);
 
-            if (i < vertexCount - 2)
+            if (i < vertexCount - 2) // Determinds the number of triangles that make up the field of view mesh, 
+                                     // the more vertexes the smoother the curve of the wireframe and the more accurate it is
             {
                 triangles[i * 3] = 0;
                 triangles[i * 3 + 1] = i + 1;

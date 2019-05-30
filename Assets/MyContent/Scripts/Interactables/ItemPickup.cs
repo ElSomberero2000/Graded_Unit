@@ -4,7 +4,7 @@ public class ItemPickup : Interactable
 {
     public Item item;
 
-    public override void Interact()
+    public override void Interact() // Called when interacting with a valid object in the scene
     {
         base.Interact();
 
@@ -18,7 +18,7 @@ public class ItemPickup : Interactable
         bool wasPickedUp = Inventory.instance.Add(item);
 
         if (wasPickedUp)
-            Destroy(gameObject);
+            Destroy(gameObject); // When the item is picked up it is removed from the scene
     }
 
 }

@@ -8,6 +8,7 @@ TagManager:
   - ToScene2
   - Enemy
   - ToScene3
+  - ToTitleScreen
   layers:
   - Default
   - TransparentFX
